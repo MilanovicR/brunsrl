@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Brun Srl - Macchinari industriali per riempimento e packaging">
+    <title>Brun Srl</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Roboto+Condensed:wght@300;400;700&family=Oswald:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: #f8f5f2;
+            color: #3a3a3a;
+            line-height: 1.7;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+        }
+
+        /* Hero Section */
+        .main-hero {
+            height: 100vh;
+            background-image: linear-gradient(rgba(40, 35, 30, 0.6), rgba(40, 35, 30, 0.4)), url('images/immagine5.jpeg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .company-name {
+            color: #fff;
+            text-shadow: 3px 3px 3px black;
+            font-size: 4.5rem;
+            letter-spacing: 0.1rem;
+            margin-bottom: 2rem;
+            position: relative;
+            animation: fadeIn 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .hero-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 3px 3px 3px black;
+            font-size: 1.4rem;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+            animation: fadeIn 1.5s 0.3s ease-out forwards;
+            opacity: 0;
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 6rem 0;
+        }
+
+        .products-grid {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s ease;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .product-image-container {
+            aspect-ratio: 1/1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.03);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .product-info h3 {
+            color: #2a2a2a;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-summary {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            min-height: 60px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: #fff;
+            padding: 6rem 0;
+            text-align: center;
+            border-top: 1px solid #eee;
+        }
+
+        .contact-section h2 {
+            color: #2a2a2a;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Form Elements */
+        input, textarea {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #c5a482;
+            box-shadow: 0 0 0 3px rgba(197, 164, 130, 0.1);
+        }
+
+        .submit-button {
+            background: linear-gradient(135deg, #c5a482, #b08f69);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .submit-button:hover {
+            opacity: 0.95;
+            transform: translateY(-1px);
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .language-switcher button {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid white;
+            color: white;
+            padding: 8px 15px;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .language-switcher button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Modal */
+        .product-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            max-width: 800px;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            position: relative;
+            margin: 2rem auto;
+            animation: modalOpen 0.3s ease-out;
+            max-height: 80vh; 
+            overflow-y: auto;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        footer {
+            background: #2a2a2a;
+            color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+            padding: 3rem 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes modalOpen {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+
+
+  /* About Section */
+
+  .about-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+  .about-section {
+            padding: 6rem 0;
+            background: #fff;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: justify;
+        }
+
+        .about-content h2 {
+    text-align: center;
+    font-size: 2.3rem;
+    margin-bottom: 2.5rem;
+    color: #2a2a2a;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.about-content h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #c5a482;
+    border-radius: 2px;
+}
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .about-highlight {
+            display: block;
+            text-align: center;
+            font-style: italic;
+            margin: 2rem 0;
+            color: #c5a482;
+            font-weight: 500;
+        }
+
+        /* About Button */
+        .about-button {
+            position: absolute;
+            bottom: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 12px 35px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .about-button:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateX(-50%) scale(1.05);
+        }
+
+
+
+        .section-title {
+    text-align: center;
+    font-size: 2.3rem;
+    color: #2a2a2a;
+    margin-bottom: 3rem;
+    grid-column: 1 / -1;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #c5a482;
+}
+
+.language-switcher button.active {
+  background: rgba(255,255,255,0.4) !important;
+}
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+
+            .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
+    }
+
+            .company-name {
+                font-size: 2.8rem;
+                padding: 0 1rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+                padding: 0 1rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 1rem;
+            }
+
+            .modal-image {
+                height: 250px;
+            }
+
+            .about-section {
+                padding: 3rem 0;
+            }
+            
+            .about-content h2 {
+        font-size: 2rem;
+        padding-bottom: 0.8rem;
+    }
+    
+    .about-content h2::after {
+        width: 60px;
+        height: 2px;
+    }
+            
+            .about-content p {
+                padding: 0 1rem;
+            }
+            
+            .about-highlight {
+                margin: 2rem 0;
+                font-size: 1.1rem;
+            }
+
+            
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="main-hero" aria-label="Main hero section">
+        <div class="language-switcher">
+            <button onclick="switchLanguage('it')" aria-label="Switch to Italian">IT</button>
+            <button onclick="switchLanguage('en')" aria-label="Switch to English">EN</button>
+        </div>
+        <div class="hero-content">
+            <h1 class="company-name">Brun SRL</h1>
+            <p class="hero-subtitle" data-translate="heroSubtitle"></p>
+        </div>
+    </section>
+
+    <!-- Sezione Chi Siamo subito dopo l'header -->
+    <section class="about-section">
+        <div class="about-container"> 
+            <div class="about-content">
+                <h2 data-translate="aboutTitle"></h2>
+                <p data-translate="aboutContent.p1"></p>
+                <p data-translate="aboutContent.p2"></p>
+                <span class="about-highlight" data-translate="aboutHighlight"></span>
+            </div>
+        </div> 
+    </section>
+
+    <main class="products-section">
+        <div class="products-grid">
+            <h2 class="section-title" data-translate="productsTitle"></h2>
+            <!-- Prodotto 1 -->
+            <article class="product-card" data-product="product1">
+                <div class="product-image-container">
+                    <img src="images/siringa.jpg" alt="Siringa Pneumatica" class="product-image" loading="lazy">
+                </div>
+                <div class="product-info">
+                    <h3 data-translate="product1.title"></h3>
+                    <p class="product-summary" data-translate="product1.summary"></p>
+                </div>
+            </article>
+
+            <!-- Prodotto 2 -->
+            <article class="product-card" data-product="product2">
+                <div class="product-image-container">
+                    <img src="images/immagine3.jpeg" alt="Iris 200" class="product-image" loading="lazy">
+                </div>
+                <div class="product-info">
+                    <h3 data-translate="product2.title"></h3>
+                    <p class="product-summary" data-translate="product2.summary"></p>
+                </div>
+            </article>
+
+            <!-- Prodotto 3 -->
+            <article class="product-card" data-product="product3">
+                <div class="product-image-container">
+                    <img src="images/Tappatore Vite.jpg" alt="Tappatore Vite" class="product-image" loading="lazy">
+                </div>
+                <div class="product-info">
+                    <h3 data-translate="product3.title"></h3>
+                    <p class="product-summary" data-translate="product3.summary"></p>
+                </div>
+            </article>
+
+            <!-- Prodotto 4 -->
+            <article class="product-card" data-product="product4">
+                <div class="product-image-container">
+                    <img src="images/Xena-8.jpg" alt="Xena 8" class="product-image" loading="lazy">
+                </div>
+                <div class="product-info">
+                    <h3 data-translate="product4.title"></h3>
+                    <p class="product-summary" data-translate="product4.summary"></p>
+                </div>
+            </article>
+        </div>
+    </main>
+    <section class="contact-section">
+        <h2 data-translate="contactTitle"></h2>
+        <div class="contact-form">
+            <form>
+                <input type="text" placeholder="Nome completo" required data-translate="fullName">
+                <input type="email" placeholder="Indirizzo email" required data-translate="email">
+                <textarea placeholder="Il tuo messaggio..." rows="5" required></textarea>
+                <button type="submit" class="submit-button" data-translate="submitButton"></button>
+            </form>
+        </div>
+    </section>
+
+    <div class="product-modal" id="productModal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <img class="modal-image" id="modalImage" alt="Product image">
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+        </div>
+    </div>
+    <footer>
+        <p data-translate="phone"></p>
+        <p data-translate="address"></p>
+        <p data-translate="copyright" style="margin-top: 1.5rem; opacity: 0.8;"></p>
+    </footer>
+
+    <script>
+        const translations = {
+            it: {
+                fullName: "Full Name",
+  email: "Email Address",
+  message: "Your Message",
+                heroSubtitle: "Soluzioni su misura, risultati che contano.",
+                contactTitle: "Non aspettare, contattami!",
+                submitButton: "Invia Messaggio",
+                phone: "📞 +39 327 424 8857",
+                   productsTitle: "I nostri prodotti",
+                address: "📍 DA METTERE",
+                copyright: "© 2025 Brun Srl - Tutti i diritti riservati",
+                product1: {
+                    title: "Siringa Pneumatica",
+                    summary: `Siringa pneumatica professionale per dosaggi precisi e...`,
+                    fullDesc: `Siringa professionale progettata per dosaggi precisi e versatili, ideale per prodotti alimentari e non alimentari. Il cilindro graduato in vetro trasparente garantisce resistenza e visibilità durante l’utilizzo, con tre opzioni di misurazione disponibili: 0-50 mm, 0-100 mm e 0-250 mm.
+L’azionamento è flessibile: scegli tra pulsante manuale o comando a pedale per un controllo pratico e personalizzato. La struttura è facile da pulire e permette regolazioni rapide per adattarsi alla lavorazione di flaconi di diverse dimensioni.
+
+La siringa può essere utilizzata come strumento autonomo oppure installata direttamente in macchinari automatici, offrendo massima adattabilità. Grazie alla sua configurazione, gestisce prodotti con caratteristiche variabili, tra cui liquidi densi, schiumosi, acidi e non solo.
+
+Una soluzione essenziale, affidabile e pronta all’uso, pensata per chi cerca precisione e semplicità operativa.`
+                },
+                product2: {
+                    title: "Iris 200",
+                    summary: "Dotata di un sistema avanzato di travaso a pompa peristaltica e...",
+                    fullDesc: `Dotata di un sistema avanzato di travaso a pompa peristaltica e dosaggio controllato da bilancia integrata, la macchina garantisce una tolleranza di riempimento di ±0,1 grammi per pesata, con quadro elettrico certificato per massima sicurezza e affidabilità. 
+                    Il funzionamento prevede il posizionamento del flacone in asse con la bilancia (situata alla base della macchina), l’azzeramento del peso e l’erogazione del prodotto tramite pulsanti dedicati, che attivano un dosaggio automatico ad alta precisione. 
+                    Tra i vantaggi principali spicca il sistema modulare: ogni tipologia di prodotto richiede una cannuccia dedicata, sostituibile rapidamente per garantire igiene e versatilità (cannucce disponibili separatamente). Grazie al pannello di controllo integrato, è possibile impostare il peso desiderato, memorizzare fino a 99 ricette personalizzate e gestire tutti i parametri operativi in modo semplice e immediato. 
+                    Ideale per applicazioni che richiedono ripetibilità, velocità e accuratezza nel dosaggio di liquidi o semiliquidi.`
+                },
+                product3: {
+                    title: "Tappatore Vite",
+                    summary: "Macchina semiautomatica ad energia elettrica progettata per...",
+                    fullDesc: `Macchina semiautomatica ad energia elettrica progettata per la chiusura precisa di tappi in metallo, anche con salva goccia, su bottiglie di vetro. 
+                    Equipaggiata con testina discendente automatica e testa a 4 rulli, garantisce una chiusura uniforme e rapida: l’operatore posiziona la bottiglia sul piattello, avvia il processo tramite pulsante e, in pochi secondi, la macchina completa filettatura e chiusura del tappo. 
+                    Disponibile anche con sistema di riempimento opzionale per un flusso di lavoro integrato.
+                    La struttura in acciaio AISI 304 garantisce durabilità e igiene, mentre i comandi a 24V e la testina con microinterruttore assicurano sicurezza e controllo. 
+                    Supporta bottiglie con diametro massimo di 200 mm e altezza massima di 350 mm, con dimensioni compatte della macchina (150 x 810 x 200 mm). 
+                    La potenza del motore è configurabile in 0,18 kW (0,25 HP) a 380V/50Hz o 0,25 kW (0,33 HP) a 220V/50Hz, adattandosi alle esigenze dell’ambiente produttivo. 
+                    Ideale per laboratori o piccole linee che richiedono precisione, affidabilità e versatilità.`
+                },
+                product4: {
+                    title: "Xena 8",
+                    summary: "Riempimento, Tappatura ed Etichettatura Integrati...",
+                    fullDesc: `Macchina Combinata per Riempire, Tappare ed Etichettare Flaconi Cilindrici
+Ideale per integrare in un’unica soluzione le operazioni di riempimento, chiusura ed etichettatura di flaconi cilindrici, il Monoblocco XENA 8 unisce sincronismo, efficienza e compattezza. Tutti i movimenti sono gestiti da motori elettrici sincronizzati, garantendo precisione e fluidità operativa. Progettato con struttura in acciaio inossidabile AISI 304, offre durabilità, facilità di lavaggio e conformità alle norme CE, complete di protezioni antinfortunistiche integrate.
+
+La siringa riempitrice aspira il prodotto da un recipiente esterno (non incluso) e inietta la dose desiderata con accuratezza, mentre l’avvitatore semiautomatico, progettato per tappi prefilettati in plastica, blocca il flacone durante la chiusura per un risultato ottimale. L’etichettatrice adesiva è specifica per flaconi cilindrici, con regolazioni rapide in altezza e volume di riempimento. Il cambio formato è semplificato, adattandosi a contenitori da 10 ml a 150 ml.
+
+Tra le opzioni disponibili: caricamento automatico dei tappi con orientatore, gruppi accessori per formati cilindrici aggiuntivi e marcatore a sistema Hp. Con ingombri contenuti (Lun. 950 mm x Lar. 700 mm; h piano lavoro 900/950 mm, h totale 1600 mm), la macchina raggiunge una produzione di 800-1000 flaconi/ora con formati da 30 ml, variabile in base al volume di riempimento.`
+                },
+                heroSubtitle: "Soluzioni su misura, risultati che contano.",
+                aboutTitle: "Chi Sono",
+                aboutContent: {
+                        p1: "Da oltre 40 anni mi occupo della progettazione di macchinari su misura, operando con competenza in tutto il territorio nazionale. Grazie alla mia esperienza, garantisco soluzioni innovative e affidabili, rese disponibili in ogni contesto.",
+                    p2: "Il processo inizia con un'attenta fase di progettazione, seguita dalla collaborazione con aziende partner selezionate per la realizzazione delle componenti. Assicurando assistenza continua e garanzia sulla qualità del prodotto."
+                },
+                aboutHighlight: "Unire creatività tecnologica, rete di collaboratori fidati e un impegno concreto verso ogni cliente.",
+            
+                
+                            },
+            en: {
+                heroSubtitle: "Custom solutions, measurable results.",
+                contactTitle: "Don't wait, contact me!",
+                submitButton: "Send Message",
+                phone: "📞 +39 327 424 8857",
+                       productsTitle: "Our Products",
+                address: "📍 DA METTERE",
+                copyright: "© 2025 Brun Srl - All rights reserved",
+                product1: {
+                    title: "Volumetric Pneumatic Filling Syringe",
+                    summary: "Volumetric Pneumatic Filling Syringe for...",
+                    fullDesc: `Professional-grade syringe engineered for precise and versatile dosing, suitable for both food and non-food products. The transparent glass graduated cylinder ensures durability and clear visibility during operation, offering three measurement ranges: 0-50 mm, 0-100 mm, and 0-250 mm.
+
+Operation is flexible: choose between manual push-button or foot pedal control for ergonomic and customizable handling. The easy-to-clean design allows quick adjustments to accommodate containers of varying sizes.
+
+This syringe can function as a standalone tool or be seamlessly integrated into automated machinery, ensuring maximum adaptability. Its configuration enables it to handle products with diverse characteristics, including dense, foamy, and acidic liquids, among others.
+
+A reliable, ready-to-use solution designed for precision and operational simplicity, ideal for users prioritizing accuracy and ease of integration.`
+                },
+                product2: {
+                    title: "Iris 200",
+                    summary: "Precision filling machine with peristaltic pump...",
+                    fullDesc: `Equipped with an advanced peristaltic pump transfer system and dosing controlled by an integrated scale, the machine ensures a filling tolerance of ±0.1 grams per weighing, complemented by a certified electrical panel for maximum safety and reliability.
+
+The operation involves positioning the bottle in alignment with the scale (located at the base of the machine), resetting the weight, and dispensing the product via dedicated buttons, which trigger automatic high-precision dosing.
+
+A key advantage is its modular system: each product type requires a dedicated tube, which can be quickly replaced to ensure hygiene and versatility (tubes available separately). Through the integrated control panel, users can set the desired weight, store up to 99 custom recipes, and manage all operational parameters easily and directly.
+
+Ideal for applications requiring repeatability, speed, and accuracy in dosing liquids or semi-liquids.`
+                },
+                product3: {
+                    title: "Screw Capper",
+                    summary: "Semi-automatic electric capping machine...",
+                    fullDesc: `Semi-Automatic Electric Capping Machine for Metal Caps with Drip-Proof Inserts
+Semi-automatic electric machine designed for precise sealing of metal caps, including those with drip-proof inserts, on glass bottles. Equipped with an automatic descending capping head and a 4-roller sealing system, it ensures uniform and rapid closure: the operator places the bottle on the platform, activates the process via a button, and within seconds, the machine completes threading and sealing of the cap. Also available with an optional integrated filling system for streamlined workflows.
+
+The AISI 304 stainless steel structure guarantees durability and hygiene, while 24V controls and the microswitch-equipped capping head ensure safety and precise operation. Compatible with bottles up to 200 mm in diameter and 350 mm in height, the machine itself features a compact design (150 x 810 x 200 mm). Motor power is configurable as 0.18 kW (0.25 HP) at 380V/50Hz or 0.25 kW (0.33 HP) at 220V/50Hz, adapting to diverse production environments. Ideal for laboratories or small-scale production lines requiring precision, reliability, and versatility.`
+                },
+                product4: {
+                    title: "Xena 8",
+                    summary: "All-in-One Solution for Filling, Capping & Labeling...",
+                    fullDesc: `Combined Machine for Filling, Capping, and Labeling Cylindrical Containers
+Ideal for integrating filling, capping, and labeling operations for cylindrical containers into a single solution, the XENA 8 Monoblock combines synchronization, efficiency, and compactness. All movements are managed by synchronized electric motors, ensuring precision and smooth operation. Designed with a stainless steel AISI 304 structure, it offers durability, easy cleaning, CE-certified with integrated safety guards, including integrated safety guards.
+
+The filling syringe draws product from an external container (not included) and injects the desired dose accurately, while the semi-automatic capper, designed for pre-threaded plastic caps, secures the container during closure for optimal results. The adhesive labeler is tailored for cylindrical containers, with quick adjustments for height and filling volume. Format changes are simplified, adapting to containers from 10 ml to 150 ml.
+
+Available options include: automatic cap loading with an orienter, accessory groups for additional cylindrical formats, and an HP system marker. With compact dimensions (L: 950 mm x W: 700 mm; worktable height 900/950 mm, total height 1600 mm), the machine achieves a production rate of 800-1000 containers/hour with 30 ml formats, varying based on filling volume. Cost-effective in purchase and operation`
+                },
+
+                aboutTitle: "About Me",
+                aboutContent: {
+                    p1: "For over 40 years, I have specialized in designing custom-made machinery, operating with expertise across the country. Leveraging my experience, I deliver innovative and reliable solutions tailored to any operational context.",
+                    p2: "The process begins with meticulous design planning, followed by collaboration with carefully selected partner companies for component manufacturing. Ensuring continuous support and product quality guarantee."
+                },
+                aboutHighlight: "Combining technological creativity, trusted network of collaborators and concrete commitment to every client.",
+            
+            }
+        };
+
+        // Modal Handling
+        const modal = document.getElementById('productModal');
+        
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const productId = card.dataset.product;
+                const lang = document.documentElement.lang || 'it';
+                const product = translations[lang][productId];
+                
+                document.getElementById('modalTitle').textContent = product.title;
+                document.getElementById('modalDescription').textContent = product.fullDesc;
+                document.getElementById('modalImage').src = card.querySelector('img').src;
+                modal.style.display = 'block';
+            });
+        });
+
+        document.querySelector('.modal-close').addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if(e.target === modal) modal.style.display = 'none';
+        });
+
+        // Language Switching
+        function switchLanguage(lang) {
+            
+        
+            document.documentElement.lang = lang;
+            
+            // Update General Elements
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.dataset.translate;
+                if(key.includes('.')) {
+                    const [section, subKey] = key.split('.');
+                    el.textContent = translations[lang][section][subKey];
+                } else {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            document.querySelectorAll('.language-switcher button').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // Initialize Italian as default
+        switchLanguage('it');
+    </script>
+</body>
+</html>

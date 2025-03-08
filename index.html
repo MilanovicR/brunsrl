@@ -28,6 +28,10 @@
             font-weight: 500;
         }
 
+        .hidden {
+  display: none;
+}
+
         /* Hero Section */
         .main-hero {
             height: 100vh;
@@ -42,9 +46,9 @@
             overflow: hidden;
         }
 
-        .company-name {
+        .company-name { 
             color: #fff;
-            text-shadow: 3px 3px 3px black;
+            text-shadow: 0 0 8px rgba(0,0,0,0.7); 
             font-size: 4.5rem;
             letter-spacing: 0.1rem;
             margin-bottom: 2rem;
@@ -486,7 +490,7 @@
             <!-- Prodotto 2 -->
             <article class="product-card" data-product="product2">
                 <div class="product-image-container">
-                    <img src="images/immagine3.jpeg" alt="Iris 200" class="product-image" loading="lazy">
+                    <img src="images/iris-200-filling-machine.jpg" alt="Iris 200 precision filling machine">
                 </div>
                 <div class="product-info">
                     <h3 data-translate="product2.title"></h3>
@@ -531,12 +535,28 @@
     <section class="contact-section">
         <h2 data-translate="contactTitle"></h2>
         <div class="contact-form">
-            <form>
-                <input type="text" placeholder="Nome completo" required data-translate="fullName">
-                <input type="email" placeholder="Indirizzo email" required data-translate="email">
-                <textarea placeholder="Il tuo messaggio..." rows="5" required></textarea>
-                <button type="submit" class="submit-button" data-translate="submitButton"></button>
-            </form>
+            <<form 
+            name="BrunSRL-Contact" 
+            method="POST" 
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+          >
+            <!-- Hidden Honeypot Field -->
+            <p class="hidden">
+              <label>Do not fill this out: <input name="bot-field"></label>
+            </p>
+          
+            <!-- Your Existing Fields -->
+            <input type="text" name="name" placeholder="Name" required data-translate="fullName">
+            <input type="email" name="email" placeholder="Email" required data-translate="email">
+            <textarea name="message" placeholder="Message" required data-translate="message"></textarea>
+            
+            <!-- Add Hidden Input for Language -->
+            <input type="hidden" name="language" id="form-language">
+            
+            <!-- Submit Button -->
+            <button type="submit" class="submit-button" data-translate="submitButton"></button>
+          </form>
         </div>
     </section>
 
@@ -556,7 +576,7 @@
     <script>
         const translations = {
             it: {
-                fullName: "Full Name",
+                fullName: "Nome Completo",
   email: "Email Address",
   message: "Your Message",
                 heroSubtitle: "Soluzioni su misura, risultati che contano.",
@@ -730,6 +750,10 @@ Available options include: automatic cap loading with an orienter, accessory gro
 
         // Initialize Italian as default
         switchLanguage('it');
+
+        document.querySelector('form').addEventListener('submit', function() {
+            document.getElementById('form-language').value = document.documentElement.lang;
+        });
     </script>
 </body>
 </html>

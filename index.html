@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="it">
-
+    <link rel="icon" href="images/luciano.ico">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -535,14 +535,15 @@
         <h2 data-translate="contactTitle"></h2>
         <div class="contact-form">
             <form
-            action="https://formspree.io/f/mpwpabdg"
+            action="https://formspree.io/f/xzzednno"
             method="POST"
             class="contact-form"
           >
-          <input type="email" name="email" placeholder="Indirizzo email" required data-translate="email">
-          <textarea name="message" placeholder="Il tuo messaggio..." rows="5" required data-translate="message"></textarea>
+          <input type="email" name="email" placeholder="Indirizzo email" required data-translate="emailPlaceholder">
+          <textarea name="message" placeholder="Il tuo messaggio..." rows="5" required 
+          data-translate="messagePlaceholder"></textarea>
 
-            <button type="submit" class="submit-button" >Send</button>
+          <button type="submit" class="submit-button" data-translate="submitButton"></button>
           </form>
         </div>
     </section>
@@ -567,7 +568,9 @@
         email: "Indirizzo email",
                 heroSubtitle: "Soluzioni su misura, risultati che contano.",
                 contactTitle: "Non aspettare, contattami!",
-                submitButton: "Invia Messaggio",
+                messagePlaceholder: "Il tuo messaggio...",
+                emailPlaceholder: "Indirizzo email",
+                submitButton: "Invia",
                 phone: "📞 +39 377 316 6211",
                    productsTitle: "I miei prodotti",
                 copyright: "© 2025 Brun Srl - Tutti i diritti riservati",
@@ -615,7 +618,6 @@ Tra le opzioni disponibili: caricamento automatico dei tappi con orientatore, gr
                     summary: "Monoblocco economico e compatto per...",
                     fullDesc: `Monoblocco economico e compatto per chiusura con tappo Bidul e corona 29. Funzionale, controlla automaticamente la presenza del Bidul nella bottiglia e si integra in linea con riempitrici esterne. Opzionale su richiesta: gruppo di riempimento aggiuntivo, disponibile in versione incorporata (unità unica) o esterna per flussi coordinati. Macchina versatile, ideale per produzioni piccole-medie, garantisce rapidità e adattabilità a formati diversi con costi contenuti.`
                 },
-                heroSubtitle: "Soluzioni su misura, risultati che contano.",
                 aboutTitle: "Chi Sono",
                 aboutContent: {
                         p1: "Da oltre 40 anni mi occupo della progettazione di macchinari su misura, operando con competenza in tutto il territorio nazionale. Grazie alla mia esperienza, garantisco soluzioni innovative e affidabili, rese disponibili in ogni contesto.",
@@ -629,7 +631,9 @@ Tra le opzioni disponibili: caricamento automatico dei tappi con orientatore, gr
                 heroSubtitle: "Custom solutions, measurable results.",
                 contactTitle: "Don't wait, contact me!",
                 message: "Your message...",
-                submitButton: "Send Message",
+                emailPlaceholder: "Email address", 
+                messagePlaceholder: "Your message...",
+                submitButton: "Send",
                 phone: "📞 +39 377 316 6211",
                        productsTitle: "My products",
                 copyright: "© 2025 Brun Srl - All rights reserved",
@@ -690,53 +694,64 @@ Available options include: automatic cap loading with an orienter, accessory gro
             }
         };
 
-        // Modal Handling
-        const modal = document.getElementById('productModal');
+            // Modal Handling
+    const modal = document.getElementById('productModal');
+    
+    document.querySelectorAll('.product-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const productId = card.dataset.product;
+            const lang = document.documentElement.lang || 'it';
+            const product = translations[lang][productId];
+            
+            document.getElementById('modalTitle').textContent = product.title;
+            document.getElementById('modalDescription').textContent = product.fullDesc;
+            document.getElementById('modalImage').src = card.querySelector('img').src;
+            modal.style.display = 'block';
+        });
+    });
+
+    document.querySelector('.modal-close').addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+        if(e.target === modal) modal.style.display = 'none';
+    });
+
+    // Language Switching (Fixed version)
+    function switchLanguage(lang) {
+        document.documentElement.lang = lang;
         
-        document.querySelectorAll('.product-card').forEach(card => {
-            card.addEventListener('click', () => {
-                const productId = card.dataset.product;
-                const lang = document.documentElement.lang || 'it';
-                const product = translations[lang][productId];
+        document.querySelectorAll('[data-translate]').forEach(el => {
+            const key = el.dataset.translate;
+            let translationPath = translations[lang];
+            
+            try {
+                key.split('.').forEach(k => {
+                    translationPath = translationPath[k];
+                });
                 
-                document.getElementById('modalTitle').textContent = product.title;
-                document.getElementById('modalDescription').textContent = product.fullDesc;
-                document.getElementById('modalImage').src = card.querySelector('img').src;
-                modal.style.display = 'block';
-            });
-        });
-
-        document.querySelector('.modal-close').addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
-
-        window.addEventListener('click', (e) => {
-            if(e.target === modal) modal.style.display = 'none';
-        });
-
-        // Language Switching
-        function switchLanguage(lang) {
-            
-        
-            document.documentElement.lang = lang;
-            
-            // Update General Elements
-            document.querySelectorAll('[data-translate]').forEach(el => {
-                const key = el.dataset.translate;
-                if(key.includes('.')) {
-                    const [section, subKey] = key.split('.');
-                    el.textContent = translations[lang][section][subKey];
+                if(el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = translationPath;
                 } else {
-                    el.textContent = translations[lang][key];
+                    el.textContent = translationPath;
                 }
-            });
+            } catch (error) {
+                console.warn(`Missing translation for key: ${key} in ${lang}`);
+            }
+        });
 
-            document.querySelectorAll('.language-switcher button').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-        }
+        // Update active language button
+        document.querySelectorAll('.language-switcher button').forEach(btn => {
+            btn.classList.remove('active');
+            if(btn.textContent === lang.toUpperCase()) {
+                btn.classList.add('active');
+            }
+        });
+    }
 
-        // Initialize Italian as default
-        switchLanguage('it');
+    // Initialize with Italian language
+    switchLanguage('it');
     </script>
 </body>
 </html>

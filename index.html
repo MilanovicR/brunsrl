@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Brun Srl - Macchinari industriali per riempimento, tappatura e linee d'imbottigliamento. Soluzioni personalizzate per i settori alimentare, cosmetico e farmaceutico. Esperienza trentennale nel packaging industriale.">
-    <title>Brun Srl - Macchinari Tappatrici Industriali e Soluzioni d'Imbottigliamento</title>
+    <meta name="description" content="Brun Srl - Macchinari industriali per riempimento e packaging">
+    <title>Brun Srl</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="images/immagine5.webp" as="image" imagesrcset="images/immagine5-400.webp 400w, images/immagine5-800.webp 800w" imagesizes="100vw">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Roboto+Condensed:wght@300;400;700&family=Oswald:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <style>
         /* Reset and Base Styles */
@@ -196,15 +197,14 @@
         }
 
         .language-switcher button {
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid white;
-            color: white;
-            padding: 8px 15px;
-            margin: 0 5px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid white;
+    padding: 12px 20px; /* Increased from 8px 15px */
+    margin: 0 5px;
+    border-radius: 8px; /* Slightly larger border radius */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
 
         .language-switcher button:hover {
             background: rgba(255, 255, 255, 0.3);
@@ -251,6 +251,77 @@
             border-radius: 8px;
             margin-bottom: 1.5rem;
         }
+
+        /* Learn More Button */
+.learn-more {
+    background: #c5a482;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.learn-more:hover {
+    background: #b08f69;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Language Flags */
+.flag-icon {
+    width: 32px; /* Increased from 24px */
+    height: 24px; /* Increased from 16px */
+    object-fit: cover;
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.language-switcher button {
+    padding: 5px;
+    background: none;
+    border: none;
+}
+
+.language-switcher button:hover .flag-icon {
+    transform: scale(1.1);
+}
+
+/* Social Links */
+.social-links {
+    margin: 1rem 0;
+}
+
+.social-icon {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.social-links a {
+    color: #c5a482 !important; /* Use your brand color */
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.social-links a:hover {
+    color: #fff !important;
+    text-decoration: underline;
+}
+
+.social-links .fa-instagram {
+    margin-right: 8px;
+    color: #c5a482; /* Match the text color */
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover .fa-instagram {
+    color: #fff;
+}
 
         footer {
             background: #2a2a2a;
@@ -451,8 +522,12 @@
 
     <section class="main-hero" aria-label="Main hero section">
         <div class="language-switcher">
-            <button onclick="switchLanguage('it')" aria-label="Switch to Italian">IT</button>
-            <button onclick="switchLanguage('en')" aria-label="Switch to English">EN</button>
+            <button onclick="switchLanguage('it')" data-lang="it" aria-label="Italian">
+                <img src="images/italy-flag-icon.svg" alt="Italiano" class="flag-icon">
+            </button>
+            <button onclick="switchLanguage('en')" data-lang="en" aria-label="English">
+                <img src="images/united-kingdom-flag-icon.svg" alt="English" class="flag-icon">
+            </button>
         </div>
         <div class="hero-content">
             <h1 class="company-name">Brun SRL</h1>
@@ -483,6 +558,7 @@
                 <div class="product-info">
                     <h3 data-translate="product1.title"></h3>
                     <p class="product-summary" data-translate="product1.summary"></p>
+                    <button class="learn-more" data-translate="learnMore"></button>
                 </div>
             </article>
 
@@ -494,6 +570,7 @@
                 <div class="product-info">
                     <h3 data-translate="product2.title"></h3>
                     <p class="product-summary" data-translate="product2.summary"></p>
+                    <button class="learn-more" data-translate="learnMore"></button>
                 </div>
             </article>
 
@@ -505,6 +582,7 @@
                 <div class="product-info">
                     <h3 data-translate="product3.title"></h3>
                     <p class="product-summary" data-translate="product3.summary"></p>
+                    <button class="learn-more" data-translate="learnMore"></button>
                 </div>
             </article>
 
@@ -516,6 +594,7 @@
                 <div class="product-info">
                     <h3 data-translate="product4.title"></h3>
                     <p class="product-summary" data-translate="product4.summary"></p>
+                    <button class="learn-more" data-translate="learnMore"></button>
                 </div>
             </article>
 
@@ -527,6 +606,7 @@
                 <div class="product-info">
                     <h3 data-translate="product5.title"></h3>
                     <p class="product-summary" data-translate="product5.summary"></p>
+                    <button class="learn-more" data-translate="learnMore"></button>
                 </div>
             </article>
         </div>
@@ -558,6 +638,15 @@
     </div>
     <footer>
         <p data-translate="phone"></p>
+        <p class="social-links">
+            <a href="https://www.instagram.com/brun__luciano/" 
+            target="_blank" 
+            rel="noopener"
+            aria-label="Instagram">
+             <i class="fab fa-instagram"></i>
+             <span data-translate="instagramHandle"></span>
+         </a>
+        </p>
         <p data-translate="copyright" style="margin-top: 1.5rem; opacity: 0.8;"></p>
     </footer>
 
@@ -566,7 +655,7 @@
             it: {
                   fullName: "Nome completo",
         email: "Indirizzo email",
-        heroSubtitle: "Macchinari industriali per riempimento e tappatura - Progettazione personalizzata di linee d'imbottigliamento per settori alimentare, cosmetico e farmaceutico. Soluzioni su misura, risultati che contani.",
+                heroSubtitle: "Soluzioni su misura, risultati che contano.",
                 contactTitle: "Non aspettare, contattami!",
                 messagePlaceholder: "Il tuo messaggio...",
                 emailPlaceholder: "Indirizzo email",
@@ -574,7 +663,9 @@
                 phone: "📞 +39 377 316 6211",
                    productsTitle: "I miei prodotti",
                 copyright: "© 2025 Brun Srl - Tutti i diritti riservati",
-                product1: {
+                learnMore: "Scopri di più",
+                instagramHandle: "Brun Srl",
+                                product1: {
                     title: "Siringa Pneumatica",
                     summary: `Siringa pneumatica professionale per dosaggi precisi e...`,
                     fullDesc: `Siringa professionale progettata per dosaggi precisi e versatili, ideale per prodotti alimentari e non alimentari. Il cilindro graduato in vetro trasparente garantisce resistenza e visibilità durante l’utilizzo, con tre opzioni di misurazione disponibili: 0-50 mm, 0-100 mm e 0-250 mm.
@@ -628,7 +719,7 @@ Tra le opzioni disponibili: caricamento automatico dei tappi con orientatore, gr
                 
                             },
             en: {
-                heroSubtitle: "Industrial filling and capping machinery - Custom bottling line solutions for food, cosmetic and pharmaceutical industries. Tailored solutions, measurable results.",
+                heroSubtitle: "Custom solutions, measurable results.",
                 contactTitle: "Don't wait, contact me!",
                 message: "Your message...",
                 emailPlaceholder: "Email address", 
@@ -637,7 +728,9 @@ Tra le opzioni disponibili: caricamento automatico dei tappi con orientatore, gr
                 phone: "📞 +39 377 316 6211",
                        productsTitle: "My products",
                 copyright: "© 2025 Brun Srl - All rights reserved",
-                product1: {
+                learnMore: "Learn More",
+                instagramHandle: "Brun Srl",
+                                product1: {
                     title: "Volumetric Pneumatic Filling Syringe",
                     summary: "Volumetric Pneumatic Filling Syringe for...",
                     fullDesc: `Professional-grade syringe engineered for precise and versatile dosing, suitable for both food and non-food products. The transparent glass graduated cylinder ensures durability and clear visibility during operation, offering three measurement ranges: 0-50 mm, 0-100 mm, and 0-250 mm.
@@ -694,11 +787,14 @@ Available options include: automatic cap loading with an orienter, accessory gro
             }
         };
 
-            // Modal Handling
+          // Modal Handling
     const modal = document.getElementById('productModal');
     
-    document.querySelectorAll('.product-card').forEach(card => {
-        card.addEventListener('click', () => {
+    // Learn More Button Handling
+    document.querySelectorAll('.learn-more').forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent card click event
+            const card = button.closest('.product-card');
             const productId = card.dataset.product;
             const lang = document.documentElement.lang || 'it';
             const product = translations[lang][productId];
@@ -710,6 +806,7 @@ Available options include: automatic cap loading with an orienter, accessory gro
         });
     });
 
+    // Modal Close Handling
     document.querySelector('.modal-close').addEventListener('click', () => {
         modal.style.display = 'none';
     });
@@ -718,10 +815,11 @@ Available options include: automatic cap loading with an orienter, accessory gro
         if(e.target === modal) modal.style.display = 'none';
     });
 
-    // Language Switching (Fixed version)
+    // Language Switching Function
     function switchLanguage(lang) {
         document.documentElement.lang = lang;
         
+        // Update all translatable elements
         document.querySelectorAll('[data-translate]').forEach(el => {
             const key = el.dataset.translate;
             let translationPath = translations[lang];
@@ -744,13 +842,13 @@ Available options include: automatic cap loading with an orienter, accessory gro
         // Update active language button
         document.querySelectorAll('.language-switcher button').forEach(btn => {
             btn.classList.remove('active');
-            if(btn.textContent === lang.toUpperCase()) {
+            if(btn.dataset.lang === lang) {
                 btn.classList.add('active');
             }
         });
     }
 
-    // Initialize with Italian language
+    // Initialize Language
     switchLanguage('it');
     </script>
 </body>

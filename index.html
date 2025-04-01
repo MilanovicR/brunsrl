@@ -4,12 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Brun Srl - Macchinari industriali per riempimento e packaging">
+    <meta name="description" content="Brun Srl - Specialisti in macchinari per imbottigliamento e inflaconatrici dal 1998. Progettazione personalizzata di linee complete per settori alimentare, cosmetico e farmaceutico. Esperienza trentennale nel packaging industriale.">
     <title>Brun Srl</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="images/immagine5.webp" as="image" imagesrcset="images/immagine5-400.webp 400w, images/immagine5-800.webp 800w" imagesizes="100vw">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Roboto+Condensed:wght@300;400;700&family=Oswald:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<link rel="preload" 
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" 
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<noscript>
+  <link rel="stylesheet" 
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap">
+        <link rel="preload" href="main.css" as="style" onload="this.rel='stylesheet'">
+
+<noscript><link rel="stylesheet" href="main.css"></noscript>
+</noscript>
     <style>
         /* Reset and Base Styles */
         * {
@@ -65,277 +74,6 @@
             animation: fadeIn 1.5s 0.3s ease-out forwards;
             opacity: 0;
         }
-
-        /* Products Section */
-        .products-section {
-            padding: 6rem 0;
-        }
-
-        .products-grid {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-        }
-
-        .product-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
-            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s ease;
-            cursor: pointer;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-        }
-
-        .product-image-container {
-            aspect-ratio: 1/1;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .product-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            transition: transform 0.4s ease;
-        }
-
-        .product-card:hover .product-image {
-            transform: scale(1.03);
-        }
-
-        .product-info {
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .product-info h3 {
-            color: #2a2a2a;
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-        }
-
-        .product-summary {
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            color: #666;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            min-height: 60px;
-        }
-
-        /* Contact Section */
-        .contact-section {
-            background: #fff;
-            padding: 6rem 0;
-            text-align: center;
-            border-top: 1px solid #eee;
-        }
-
-        .contact-section h2 {
-            color: #2a2a2a;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Form Elements */
-        input, textarea {
-            width: 100%;
-            padding: 1rem;
-            margin-bottom: 1.5rem;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: #c5a482;
-            box-shadow: 0 0 0 3px rgba(197, 164, 130, 0.1);
-        }
-
-        .submit-button {
-            background: linear-gradient(135deg, #c5a482, #b08f69);
-            color: white;
-            padding: 1.2rem 2.5rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: transform 0.2s ease, opacity 0.2s ease;
-        }
-
-        .submit-button:hover {
-            opacity: 0.95;
-            transform: translateY(-1px);
-        }
-
-        /* Language Switcher */
-        .language-switcher {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
-
-        .language-switcher button {
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid white;
-    padding: 12px 20px; /* Increased from 8px 15px */
-    margin: 0 5px;
-    border-radius: 8px; /* Slightly larger border radius */
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-        .language-switcher button:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        /* Modal */
-        .product-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 1000;
-            overflow-y: auto;
-        }
-
-        .modal-content {
-            max-width: 800px;
-            padding: 2rem;
-            background: white;
-            border-radius: 10px;
-            position: relative;
-            margin: 2rem auto;
-            animation: modalOpen 0.3s ease-out;
-            max-height: 80vh; 
-            overflow-y: auto;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #333;
-        }
-
-        .modal-image {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-        }
-
-        /* Learn More Button */
-.learn-more {
-    background: #c5a482;
-    color: white;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 25px;
-    margin-top: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.learn-more:hover {
-    background: #b08f69;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-/* Language Flags */
-.flag-icon {
-    width: 32px; /* Increased from 24px */
-    height: 24px; /* Increased from 16px */
-    object-fit: cover;
-    display: block;
-    transition: transform 0.2s ease;
-}
-
-.language-switcher button {
-    padding: 5px;
-    background: none;
-    border: none;
-}
-
-.language-switcher button:hover .flag-icon {
-    transform: scale(1.1);
-}
-
-/* Social Links */
-.social-links {
-    margin: 1rem 0;
-}
-
-.social-icon {
-    width: 20px;
-    height: 20px;
-    vertical-align: middle;
-    margin-right: 8px;
-}
-
-.social-links a {
-    color: #c5a482 !important; /* Use your brand color */
-    text-decoration: none;
-    transition: all 0.3s ease;
-    font-weight: 500;
-}
-
-.social-links a:hover {
-    color: #fff !important;
-    text-decoration: underline;
-}
-
-.social-links .fa-instagram {
-    margin-right: 8px;
-    color: #c5a482; /* Match the text color */
-    transition: all 0.3s ease;
-}
-
-.social-links a:hover .fa-instagram {
-    color: #fff;
-}
-
-        footer {
-            background: #2a2a2a;
-            color: rgba(255, 255, 255, 0.9);
-            text-align: center;
-            padding: 3rem 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        footer p {
-            margin: 0.5rem 0;
-            font-size: 0.95rem;
-        }
-
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(40px); }
@@ -347,9 +85,326 @@
             to { transform: scale(1); opacity: 1; }
         }
 
+          /* About Section */
 
+      /* Products Section */
+      .products-section {
+        padding: 6rem 0;
+    }
 
-  /* About Section */
+    .products-grid {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 3rem;
+    }
+
+    .product-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+        transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s ease;
+        cursor: pointer;
+    }
+
+    .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .product-image-container {
+        aspect-ratio: 1/1;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .product-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: transform 0.4s ease;
+    }
+
+    .product-card:hover .product-image {
+        transform: scale(1.03);
+    }
+
+    .product-info {
+        padding: 1.5rem;
+        text-align: center;
+    }
+
+    .product-info h3 {
+        color: #2a2a2a;
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+    }
+
+    .product-summary {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        color: #666;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        min-height: 60px;
+    }
+
+    /* Contact Section */
+    .contact-section {
+        background: #fff;
+        padding: 6rem 0;
+        text-align: center;
+        border-top: 1px solid #eee;
+    }
+
+    .contact-section h2 {
+        color: #2a2a2a;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+    }
+
+    .contact-form {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    /* Form Elements */
+    input, textarea {
+        width: 100%;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+        outline: none;
+        border-color: #c5a482;
+        box-shadow: 0 0 0 3px rgba(197, 164, 130, 0.1);
+    }
+
+    .submit-button {
+        background: linear-gradient(135deg, #c5a482, #b08f69);
+        color: white;
+        padding: 1.2rem 2.5rem;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .submit-button:hover {
+        opacity: 0.95;
+        transform: translateY(-1px);
+    }
+
+    /* Language Switcher */
+    .language-switcher {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+    }
+
+    .language-switcher button {
+background: rgba(255, 255, 255, 0.2);
+border: 1px solid white;
+padding: 12px 20px; /* Increased from 8px 15px */
+margin: 0 5px;
+border-radius: 8px; /* Slightly larger border radius */
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+    .language-switcher button:hover {
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Modal */
+    .product-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.8);
+        z-index: 1000;
+        overflow-y: auto;
+    }
+
+    .modal-content {
+        max-width: 800px;
+        padding: 2rem;
+        background: white;
+        border-radius: 10px;
+        position: relative;
+        margin: 2rem auto;
+        animation: modalOpen 0.3s ease-out;
+        max-height: 80vh; 
+        overflow-y: auto;
+    }
+
+    .modal-close {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #333;
+    }
+
+    .modal-image {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Learn More Button */
+.learn-more {
+background: #c5a482;
+color: white;
+border: none;
+padding: 0.8rem 1.5rem;
+border-radius: 25px;
+margin-top: 1rem;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.learn-more:hover {
+background: #b08f69;
+transform: translateY(-2px);
+box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Language Flags */
+.flag-icon {
+width: 32px; /* Increased from 24px */
+height: 24px; /* Increased from 16px */
+object-fit: cover;
+display: block;
+transition: transform 0.2s ease;
+}
+
+.language-switcher button {
+padding: 5px;
+background: none;
+border: none;
+}
+
+.language-switcher button:hover .flag-icon {
+transform: scale(1.1);
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+.social-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    color: #fff !important;
+}
+
+.fab {
+    font-size: 1.4rem;
+    vertical-align: middle;
+}
+
+/* Colori specifici delle icone */
+.fa-instagram { 
+    color: #E1306C !important; 
+}
+.fa-whatsapp { 
+    color: #25D366 !important; 
+}
+.social-link[href*="whatsapp"] {
+    color: #25D366 !important;
+}
+
+.social-link[href*="instagram"] {
+    color: #E1306C !important;
+}
+
+.social-link:hover .fa-instagram,
+.social-link:hover .fa-whatsapp {
+    color: #fff;
+}
+.social-link.whatsapp-link {
+    color: #25D366 !important;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    color: #c5a482 !important;
+    text-decoration: none !important;
+}
+
+.social-icon {
+width: 20px;
+height: 20px;
+vertical-align: middle;
+margin-right: 8px;
+}
+
+.social-links a {
+text-decoration: none;
+transition: all 0.3s ease;
+font-weight: 500;
+}
+
+.social-links a:hover {
+color: #fff !important;
+text-decoration: underline;
+}
+
+.social-links i.fa-instagram {
+    margin-right: 8px;
+    color: #c5a482;
+    transition: all 0.3s ease;
+    font-size: 1.2rem; /* Aggiungi dimensione */
+}
+
+.social-links a:hover .fa-instagram {
+color: #fff;
+}
+
+    footer {
+        background: #2a2a2a;
+        color: rgba(255, 255, 255, 0.9);
+        text-align: center;
+        padding: 3rem 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    footer p {
+        margin: 0.5rem 0;
+        font-size: 0.95rem;
+    }
+
 
   .about-container {
     max-width: 900px;
@@ -514,6 +569,8 @@
 
             
         }
+
+
     </style>
     <link rel="stylesheet" href="main.css" media="all" onload="this.media='all'">
 </head>
@@ -637,15 +694,29 @@
         </div>
     </div>
     <footer>
-        <p data-translate="phone"></p>
+        <p>
+            <span id="phoneNumber" data-translate="phone" style="cursor: pointer; position: relative;">
+                +39 377 316 6211
+            </span>
+        </p>
         <p class="social-links">
             <a href="https://www.instagram.com/brun__luciano/" 
-            target="_blank" 
-            rel="noopener"
-            aria-label="Instagram">
-             <i class="fab fa-instagram"></i>
-             <span data-translate="instagramHandle"></span>
-         </a>
+            class="social-link instagram-link"
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="social-link">
+                <i class="fab fa-instagram"></i>
+                <span data-translate="instagramHandle"></span>
+            </a>
+            <a href="https://wa.me/393773166211"
+            class="social-link whatsapp-link"
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="social-link"
+               style="margin-left: 1.5rem;">
+                <i class="fab fa-whatsapp"></i>
+                <span data-translate="whatsappHandle"></span>
+            </a>
         </p>
         <p data-translate="copyright" style="margin-top: 1.5rem; opacity: 0.8;"></p>
     </footer>
@@ -655,7 +726,7 @@
             it: {
                   fullName: "Nome completo",
         email: "Indirizzo email",
-                heroSubtitle: "Soluzioni su misura, risultati che contano.",
+        heroSubtitle: "Macchinari industriali per riempimento e tappatura - Progettazione personalizzata di linee d'imbottigliamento per settori alimentare, cosmetico e farmaceutico. Soluzioni su misura, risultati che contano.",
                 contactTitle: "Non aspettare, contattami!",
                 messagePlaceholder: "Il tuo messaggio...",
                 emailPlaceholder: "Indirizzo email",
@@ -664,7 +735,8 @@
                    productsTitle: "I miei prodotti",
                 copyright: "© 2025 Brun Srl - Tutti i diritti riservati",
                 learnMore: "Scopri di più",
-                instagramHandle: "Brun Srl",
+                instagramHandle: "Instagram",
+                whatsappHandle: "Whatsapp",
                                 product1: {
                     title: "Siringa Pneumatica",
                     summary: `Siringa pneumatica professionale per dosaggi precisi e...`,
@@ -719,7 +791,7 @@ Tra le opzioni disponibili: caricamento automatico dei tappi con orientatore, gr
                 
                             },
             en: {
-                heroSubtitle: "Custom solutions, measurable results.",
+                heroSubtitle: "Industrial filling and capping machinery - Custom bottling line solutions for food, cosmetic and pharmaceutical industries. Tailored solutions, measurable results.",
                 contactTitle: "Don't wait, contact me!",
                 message: "Your message...",
                 emailPlaceholder: "Email address", 
@@ -729,7 +801,8 @@ Tra le opzioni disponibili: caricamento automatico dei tappi con orientatore, gr
                        productsTitle: "My products",
                 copyright: "© 2025 Brun Srl - All rights reserved",
                 learnMore: "Learn More",
-                instagramHandle: "Brun Srl",
+                instagramHandle: "Instagram",
+                whatsappHandle: "Whatsapp",
                                 product1: {
                     title: "Volumetric Pneumatic Filling Syringe",
                     summary: "Volumetric Pneumatic Filling Syringe for...",

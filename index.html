@@ -12,6 +12,7 @@
       as="style"
       onload="this.onload=null;this.rel='stylesheet'">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+      
 <noscript>
   <link rel="stylesheet" 
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap">
@@ -392,6 +393,31 @@ text-decoration: underline;
 color: #fff;
 }
 
+/* TELEFONO */
+#phoneNumber {
+    display: inline-block;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+#phoneNumber:hover {
+    background: rgba(197, 164, 130, 0.2);
+    transform: scale(1.05);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Make it clickable on mobile */
+#phoneNumber a {
+    color: inherit;
+    text-decoration: none;
+}
+
     footer {
         background: #2a2a2a;
         color: rgba(255, 255, 255, 0.9);
@@ -610,7 +636,7 @@ color: #fff;
             <!-- Prodotto 1 -->
             <article class="product-card" data-product="product1">
                 <div class="product-image-container">
-                    <img src="images/siringa.webp" alt="Siringa Pneumatica" class="product-image" loading="lazy">
+                    <img src="images/siringa.webp" alt="Siringa pneumatica professionale per dosaggio preciso - Macchinario imbottigliamento liquidi alimentari e industriali" class="product-image" loading="lazy">
                 </div>
                 <div class="product-info">
                     <h3 data-translate="product1.title"></h3>
@@ -622,7 +648,7 @@ color: #fff;
             <!-- Prodotto 2 -->
             <article class="product-card" data-product="product2">
                 <div class="product-image-container">
-                    <img src="images/immagine3.webp" alt="Iris 200" class="product-image" loading="lazy">
+                    <img src="images/immagine3.webp" alt="Macchina riempimento Iris 200 con bilancia integrata - Soluzione precisione ±0.1g per settore farmaceutico e cosmetico" class="product-image" loading="lazy">
                 </div>
                 <div class="product-info">
                     <h3 data-translate="product2.title"></h3>
@@ -634,7 +660,7 @@ color: #fff;
             <!-- Prodotto 3 -->
             <article class="product-card" data-product="product3">
                 <div class="product-image-container">
-                    <img src="images/Tappatore Vite.webp" alt="Tappatore Vite" class="product-image" loading="lazy">
+                    <img src="images/Tappatore Vite.webp" alt="Tappatrice automatica per bottiglie vetro - Chiusura tappi metallici e salva goccia per industria alimentare" class="product-image" loading="lazy">
                 </div>
                 <div class="product-info">
                     <h3 data-translate="product3.title"></h3>
@@ -646,7 +672,7 @@ color: #fff;
             <!-- Prodotto 4 -->
             <article class="product-card" data-product="product4">
                 <div class="product-image-container">
-                    <img src="images/Xena-8.webp" alt="Xena 8" class="product-image" loading="lazy">
+                    <img src="images/Xena-8.webp" alt="Linea completa Xena 8 - Riempimento, tappatura ed etichettatura automatica per flaconi cosmetici e farmaceutici" class="product-image" loading="lazy">
                 </div>
                 <div class="product-info">
                     <h3 data-translate="product4.title"></h3>
@@ -658,7 +684,7 @@ color: #fff;
             <!-- Prodotto 5 -->
             <article class="product-card" data-product="product5">
                 <div class="product-image-container">
-                    <img src="images/bidul.webp" alt="Bidul" class="product-image" loading="lazy">
+                    <img src="images/bidul.webp" alt="Monoblocco Bidul Corona 29 - Macchinario compatto per chiusura bottiglie" class="product-image" loading="lazy">
                 </div>
                 <div class="product-info">
                     <h3 data-translate="product5.title"></h3>
@@ -695,8 +721,8 @@ color: #fff;
     </div>
     <footer>
         <p>
-            <span id="phoneNumber" data-translate="phone" style="cursor: pointer; position: relative;">
-                +39 377 316 6211
+            <span id="phoneNumber" data-translate="phone">
+                <a href="tel:+393773166211">+39 377 316 6211</a>
             </span>
         </p>
         <p class="social-links">
@@ -729,7 +755,7 @@ color: #fff;
         heroSubtitle: "Macchinari industriali per riempimento e tappatura - Progettazione personalizzata di linee d'imbottigliamento per settori alimentare, cosmetico e farmaceutico. Soluzioni su misura, risultati che contano.",
                 contactTitle: "Non aspettare, contattami!",
                 messagePlaceholder: "Il tuo messaggio...",
-                emailPlaceholder: "Indirizzo email",
+                emailPlaceholder: "Il tuo indirizzo email",
                 submitButton: "Invia",
                 phone: "📞 +39 377 316 6211",
                    productsTitle: "I miei prodotti",
@@ -794,7 +820,7 @@ Tra le opzioni disponibili: caricamento automatico dei tappi con orientatore, gr
                 heroSubtitle: "Industrial filling and capping machinery - Custom bottling line solutions for food, cosmetic and pharmaceutical industries. Tailored solutions, measurable results.",
                 contactTitle: "Don't wait, contact me!",
                 message: "Your message...",
-                emailPlaceholder: "Email address", 
+                emailPlaceholder: "Your email address", 
                 messagePlaceholder: "Your message...",
                 submitButton: "Send",
                 phone: "📞 +39 377 316 6211",

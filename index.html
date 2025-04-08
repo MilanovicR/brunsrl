@@ -246,16 +246,16 @@ transition: all 0.3s ease;
     }
 
     .modal-content {
-        max-width: 800px;
-        padding: 2rem;
-        background: white;
-        border-radius: 10px;
-        position: relative;
-        margin: 2rem auto;
-        animation: modalOpen 0.3s ease-out;
-        max-height: 80vh; 
-        overflow-y: auto;
-    }
+    max-width: 800px; /* This was missing */
+    padding: 2rem;
+    background: white;
+    border-radius: 10px;
+    position: relative;
+    margin: 2rem auto;
+    animation: modalOpen 0.3s ease-out;
+    max-height: 80vh; 
+    overflow-y: auto;
+}
 
     .modal-close {
         position: absolute;
@@ -266,13 +266,30 @@ transition: all 0.3s ease;
         color: #333;
     }
 
+  
     .modal-image {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        border-radius: 8px;
-        margin-bottom: 1.5rem;
-    }
+    width: 100%;
+    max-width: 70%; /* This was missing */
+    height: auto;
+    margin: 0 auto; /* This was missing */
+    display: block; /* This was missing */
+    object-fit: contain; /* This was missing */
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease-in-out;
+    transform: scale(0.95);
+    cursor: zoom-in;
+}
+
+.modal-image:hover {
+    transform: scale(1); /* Full size on hover */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+@keyframes imageEntrance {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(0.95); opacity: 1; }
+}
 
     /* Learn More Button */
 .learn-more {
@@ -978,21 +995,6 @@ Available options include: automatic cap loading with an orienter, accessory gro
           // Modal Handling
     const modal = document.getElementById('productModal');
     
-    // Learn More Button Handling
-    document.querySelectorAll('.learn-more').forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevent card click event
-            const card = button.closest('.product-card');
-            const productId = card.dataset.product;
-            const lang = document.documentElement.lang || 'it';
-            const product = translations[lang][productId];
-            
-            document.getElementById('modalTitle').textContent = product.title;
-            document.getElementById('modalDescription').textContent = product.fullDesc;
-            document.getElementById('modalImage').src = card.querySelector('img').src;
-            modal.style.display = 'block';
-        });
-    });
 
     // Modal Close Handling
     document.querySelector('.modal-close').addEventListener('click', () => {
@@ -1057,6 +1059,31 @@ window.addEventListener('click', (e) => {
         videoModal.style.display = 'none';
         videoModal.querySelector('video').pause();
     }
+});
+
+// Learn More Button Handling
+document.querySelectorAll('.learn-more').forEach(button => {
+    button.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const card = button.closest('.product-card');
+        const productId = card.dataset.product;
+        const lang = document.documentElement.lang || 'it';
+        const product = translations[lang][productId];
+        
+        // Reset image scale before showing
+        const modalImg = document.getElementById('modalImage');
+        modalImg.style.transform = 'scale(0.95)';
+        
+        document.getElementById('modalTitle').textContent = product.title;
+        document.getElementById('modalDescription').textContent = product.fullDesc;
+        modalImg.src = card.querySelector('img').src;
+        modal.style.display = 'block';
+    });
+});
+
+// Add click to zoom functionality
+document.getElementById('modalImage').addEventListener('click', function() {
+    this.style.transform = this.style.transform === 'scale(1)' ? 'scale(0.95)' : 'scale(1)';
 });
 
     // Initialize Language

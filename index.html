@@ -393,9 +393,84 @@ text-decoration: underline;
 color: #fff;
 }
 
+/* Video Modal */
+.video-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    z-index: 1001;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.video-modal-content {
+    position: relative;
+    max-width: 600px;
+    margin: 2% auto;
+    animation: modalOpen 0.3s ease-out;
+}
+
+.responsive-video {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.video-modal-close {
+    position: absolute;
+    top: -35px;
+    right: -5px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+/* Video Trigger Button */
+.video-trigger {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.video-trigger:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+}
+
+.video-trigger i {
+    font-size: 1.1em;
+}
+
+/* Windows-specific adjustment */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .video-modal-content {
+        width: 500px;
+    }
+    .responsive-video {
+        height: 700px;
+    }
+}
+
 /* TELEFONO */
 #phoneNumber {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
     font-size: 1.2rem;
     font-weight: 600;
     color: white;
@@ -406,10 +481,11 @@ color: #fff;
     text-decoration: none;
 }
 
-#phoneNumber:hover {
-    background: rgba(197, 164, 130, 0.2);
-    transform: scale(1.05);
-    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+#phoneNumber a {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    text-align: center;
 }
 
 /* Make it clickable on mobile */
@@ -678,6 +754,7 @@ color: #fff;
                     <h3 data-translate="product4.title"></h3>
                     <p class="product-summary" data-translate="product4.summary"></p>
                     <button class="learn-more" data-translate="learnMore"></button>
+                    <button class="video-trigger" data-translate="watchVideo"></button>
                 </div>
             </article>
 
@@ -710,6 +787,15 @@ color: #fff;
           </form>
         </div>
     </section>
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-content">
+            <span class="video-modal-close">&times;</span>
+            <video controls class="responsive-video" poster="images/video-poster.jpg">
+                <source src="videos/xena8.mp4" type="video/mp4">
+                Il vostro browser non supporta il video.
+            </video>
+        </div>
+    </div>
 
     <div class="product-modal" id="productModal">
         <div class="modal-content">
@@ -722,7 +808,8 @@ color: #fff;
     <footer>
         <p>
             <span id="phoneNumber" data-translate="phone">
-                <a href="tel:+393773166211">+39 377 316 6211</a>
+                <a href="tel:+393773166211">+39 377 316 6211</a><br>
+                <a href="tel:+393517658120">+39 351 765 8120</a>
             </span>
         </p>
         <p class="social-links">
@@ -757,7 +844,7 @@ color: #fff;
                 messagePlaceholder: "Il tuo messaggio...",
                 emailPlaceholder: "Il tuo indirizzo email",
                 submitButton: "Invia",
-                phone: "📞 +39 377 316 6211",
+                phone: "📞 +39 377 316 6211\n+39 351 765 8120",
                    productsTitle: "I miei prodotti",
                 copyright: "© 2025 Brun Srl - Tutti i diritti riservati",
                 learnMore: "Scopri di più",
@@ -813,6 +900,7 @@ Tra le opzioni disponibili: caricamento automatico dei tappi con orientatore, gr
                     p2: "Il processo inizia con un'attenta fase di progettazione, seguita dalla collaborazione con aziende partner selezionate per la realizzazione delle componenti. Assicurando assistenza continua e garanzia sulla qualità del prodotto."
                 },
                 aboutHighlight: "Unire creatività tecnologica, rete di collaboratori fidati e un impegno concreto verso ogni cliente.",
+                watchVideo: "Vedila in azione ▶",
             
                 
                             },
@@ -823,7 +911,7 @@ Tra le opzioni disponibili: caricamento automatico dei tappi con orientatore, gr
                 emailPlaceholder: "Your email address", 
                 messagePlaceholder: "Your message...",
                 submitButton: "Send",
-                phone: "📞 +39 377 316 6211",
+                phone: "📞 +39 377 316 6211\n+39 351 765 8120",
                        productsTitle: "My products",
                 copyright: "© 2025 Brun Srl - All rights reserved",
                 learnMore: "Learn More",
@@ -882,6 +970,7 @@ Available options include: automatic cap loading with an orienter, accessory gro
                     p2: "The process begins with meticulous design planning, followed by collaboration with carefully selected partner companies for component manufacturing. Ensuring continuous support and product quality guarantee."
                 },
                 aboutHighlight: "Combining technological creativity, trusted network of collaborators and concrete commitment to every client.",
+                watchVideo: "Watch in action ▶",
             
             }
         };
@@ -931,7 +1020,7 @@ Available options include: automatic cap loading with an orienter, accessory gro
                 if(el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
                     el.placeholder = translationPath;
                 } else {
-                    el.textContent = translationPath;
+                    el.innerHTML = translationPath.replace(/\n/g, '<br>');
                 }
             } catch (error) {
                 console.warn(`Missing translation for key: ${key} in ${lang}`);
@@ -946,6 +1035,29 @@ Available options include: automatic cap loading with an orienter, accessory gro
             }
         });
     }
+
+    const videoModal = document.getElementById('videoModal');
+const videoTriggers = document.querySelectorAll('.video-trigger');
+
+videoTriggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+        videoModal.style.display = 'block';
+        videoModal.querySelector('video').play();
+    });
+});
+
+// Close video modal
+document.querySelector('.video-modal-close').addEventListener('click', () => {
+    videoModal.style.display = 'none';
+    videoModal.querySelector('video').pause();
+});
+
+window.addEventListener('click', (e) => {
+    if(e.target === videoModal) {
+        videoModal.style.display = 'none';
+        videoModal.querySelector('video').pause();
+    }
+});
 
     // Initialize Language
     switchLanguage('it');
